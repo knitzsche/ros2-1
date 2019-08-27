@@ -43,15 +43,17 @@ private:
   std::string get_word(int limit, std::string filename)
   {
     std::string path;
-    const char* env_p = std::getenv("SNAP_DATA");
+    const char* env_p = std::getenv("SNAP");
     if ((env_p != NULL) && (env_p[0] == '\0'))
     { 
       path = std::string(env_p);
+      std::cout << "not null. $SNAP is " << path << std::endl;
     }
     else
     {
       path = "/tmp/";
     }
+    std::cout << "path: " << path << std::endl;
     std::string adj;
     std::ifstream infile(path + filename);
     if (infile.fail())	
